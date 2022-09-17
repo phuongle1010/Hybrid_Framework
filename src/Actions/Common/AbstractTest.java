@@ -14,7 +14,7 @@ public class AbstractTest {
         CHROME, FIREFOX, CHROME_HEADLESS, FIREFOX_HEADLESS
     }
 
-    protected WebDriver getBrowser(String browserName, String url) {
+    protected WebDriver getBrowser(String browserName) {
 
 //        if (browserName.equals("chrome")) {
 //            //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/browsers/chromedriver.exe");

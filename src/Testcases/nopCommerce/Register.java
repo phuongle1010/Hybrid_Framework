@@ -16,25 +16,26 @@ public class Register extends AbstractTest {
     HomepageAction homepageAction;
     EditAccountPageObject editAccountPageObject;
 
-    @Parameters({"browsers", "url"})
+    @Parameters("browsers")
     @BeforeClass
-    public void beforeClass(String browserName, String url) {
-        driver = getBrowser(browserName, url);
+    public void beforeClass(String browserName) {
+        driver = getBrowser(browserName);
         registerAction = new RegisterAction(driver);
         homepageAction = new HomepageAction(driver);
         editAccountPageObject = new EditAccountPageObject(driver);
+        driver.get("https://demo.nopcommerce.com/");
     }
 
     @Test
     public void TC_01_Register() {
         homepageAction.clicklnkRegister("Register");
-//        registerAction.inputFirstname("Khoamama");
-//        registerAction.inputLastname("cancer");
-//        registerAction.inputEmail(generatorEmail());
-//        registerAction.inputPassword("123456a");
-//        registerAction.inputConfirmPassword("123456a");
-//        registerAction.clickRegister();
-        //homepageAction.clicklnkLogout();
+        registerAction.inputFirstname("Khoamama");
+        registerAction.inputLastname("cancer");
+        registerAction.inputEmail(generatorEmail());
+        registerAction.inputPassword("123456a");
+        registerAction.inputConfirmPassword("123456a");
+        registerAction.clickRegister();
+        homepageAction.clicklnkLogout();
     }
 
     @Test

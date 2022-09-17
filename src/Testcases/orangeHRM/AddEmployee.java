@@ -21,56 +21,49 @@ public class AddEmployee extends AbstractTest {
     SearchEmloyeePageObject searchEmloyeePageObject;
     EditEmployeePageObject editEmployeePageObject;
 
-    @Parameters({"browsers", "url"})
+    @Parameters("browsers")
     @BeforeClass
-    public void beforeClass(String browserName, String url) {
-        driver = getBrowser(browserName, url);
+    public void beforeClass(String browserName) {
+        driver = getBrowser(browserName);
         loginPageObject = new LoginPageObject(driver);
         addEmployeePageObject = new AddEmployeePageObject(driver);
         searchEmloyeePageObject = new SearchEmloyeePageObject(driver);
         editEmployeePageObject = new EditEmployeePageObject(driver);
-
-        driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
+        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
-
-//    @Test
-//    public void TC_01_Login() {
-//        loginPageObject.inputUserName("Admin");
-//        loginPageObject.inputPassword("admin123");
-//        loginPageObject.submit();
-//
-//    }
-//
-////    @Test
-////    public void TC_02_AddEmployee() {
-////        addEmployeePageObject.clickAddEployeelnk();
-////        addEmployeePageObject.inputFirstname("Wanda");
-////        addEmployeePageObject.inputMiddlenamr("van");
-////        addEmployeePageObject.inputLastname("da");
-////        addEmployeePageObject.clickSave();
-////    }
-//
-////    @Test
-////    public void TC_03_SearchEmployee() {
-////        //searchEmloyeePageObject.clicklnkEmployeelist();
-////        searchEmloyeePageObject.inputEmloyeeId("0250");
-////        loginPageObject.submit();
-////
-////    }
-//
-//    @Test
-//    public void TC_04_EditEmployee() {
-//        editEmployeePageObject.clickbtnEdit();
-//        editEmployeePageObject.clicklnkJob();
-//        //editEmployeePageObject.selectDdlJobTitle("QA Lead");
-//        editEmployeePageObject.selectDdlSubUnit("Engineering");
-//        loginPageObject.submit();
-//    }
 
     @Test
-    public void TC_05_SelectNumber(){
-        loginPageObject.selectItem("9");
+    public void TC_01_Login() {
+        loginPageObject.inputUserName("Admin");
+        loginPageObject.inputPassword("admin123");
+        loginPageObject.submit();
     }
+
+    @Test
+    public void TC_02_AddEmployee() {
+        addEmployeePageObject.clickAddEployeelnk();
+        addEmployeePageObject.inputFirstname("Wanda");
+        addEmployeePageObject.inputMiddlenamr("van");
+        addEmployeePageObject.inputLastname("da");
+        addEmployeePageObject.clickSave();
+    }
+
+    @Test
+    public void TC_03_SearchEmployee() {
+        //searchEmloyeePageObject.clicklnkEmployeelist();
+        searchEmloyeePageObject.inputEmloyeeId("0250");
+        loginPageObject.submit();
+    }
+
+    @Test
+    public void TC_04_EditEmployee() {
+        editEmployeePageObject.clickbtnEdit();
+        editEmployeePageObject.clicklnkJob();
+        editEmployeePageObject.selectDdlJobTitle("QA Lead");
+        editEmployeePageObject.selectDdlSubUnit("Engineering");
+        loginPageObject.submit();
+    }
+
     @AfterClass
     public void afterClass() {
         driver.quit();
