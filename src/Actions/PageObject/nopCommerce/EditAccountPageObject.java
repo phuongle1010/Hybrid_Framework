@@ -26,7 +26,7 @@ public class EditAccountPageObject extends AbstractPage {
 //    }
 
         public void clickMenu(String linkName){
-        clickToElement(driver,EditAccountUI.lnkMenu, linkName);
+        clickToElementDynamic(driver,EditAccountUI.lnkMenu, linkName);
         sleep(2);
     }
 

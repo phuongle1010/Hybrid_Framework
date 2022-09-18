@@ -33,44 +33,40 @@ public class AddEmployee extends AbstractTest {
         driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
     }
 
-//    @Test
-//    public void TC_01_Login() {
-//        loginPageObject.inputUserName("Admin");
-//        loginPageObject.inputPassword("admin123");
-//        loginPageObject.submit();
-//
-//    }
-//
-////    @Test
-////    public void TC_02_AddEmployee() {
-////        addEmployeePageObject.clickAddEployeelnk();
-////        addEmployeePageObject.inputFirstname("Wanda");
-////        addEmployeePageObject.inputMiddlenamr("van");
-////        addEmployeePageObject.inputLastname("da");
-////        addEmployeePageObject.clickSave();
-////    }
-//
-////    @Test
-////    public void TC_03_SearchEmployee() {
-////        //searchEmloyeePageObject.clicklnkEmployeelist();
-////        searchEmloyeePageObject.inputEmloyeeId("0250");
-////        loginPageObject.submit();
-////
-////    }
-//
-//    @Test
-//    public void TC_04_EditEmployee() {
-//        editEmployeePageObject.clickbtnEdit();
-//        editEmployeePageObject.clicklnkJob();
-//        //editEmployeePageObject.selectDdlJobTitle("QA Lead");
-//        editEmployeePageObject.selectDdlSubUnit("Engineering");
-//        loginPageObject.submit();
-//    }
+    @Test
+    public void TC_01_Login() {
+        loginPageObject.inputUserName("Admin");
+        loginPageObject.inputPassword("admin123");
+        loginPageObject.submit();
+
+    }
 
     @Test
-    public void TC_05_SelectNumber(){
-        loginPageObject.selectItem("9");
+    public void TC_02_AddEmployee() {
+        addEmployeePageObject.clickAddEployeelnk();
+        addEmployeePageObject.inputFirstname("Wanda");
+        addEmployeePageObject.inputMiddlenamr("van");
+        addEmployeePageObject.inputLastname("da");
+        addEmployeePageObject.clickSave();
     }
+
+    @Test
+    public void TC_03_SearchEmployee() {
+        //searchEmloyeePageObject.clicklnkEmployeelist();
+        searchEmloyeePageObject.inputEmloyeeId("0250");
+        loginPageObject.submit();
+
+    }
+
+    @Test
+    public void TC_04_EditEmployee() {
+        editEmployeePageObject.clickbtnEdit();
+        editEmployeePageObject.clicklnkJob();
+        //editEmployeePageObject.selectDdlJobTitle("QA Lead");
+        editEmployeePageObject.selectDdlSubUnit("Engineering");
+        loginPageObject.submit();
+    }
+
     @AfterClass
     public void afterClass() {
         driver.quit();

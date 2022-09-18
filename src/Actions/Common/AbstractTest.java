@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class AbstractTest {
     WebDriver driver;
 
-    private enum Browser {
+    private enum Browsers {
         CHROME, FIREFOX, CHROME_HEADLESS, FIREFOX_HEADLESS
     }
 
@@ -36,8 +36,8 @@ public class AbstractTest {
 //        } else
 //            throw new RuntimeException("unknow browser");
 
-        Browser browser = Browser.valueOf(browserName.toUpperCase());
-        switch (browser) {
+        Browsers browsers = Browsers.valueOf(browserName.toUpperCase());
+        switch (browsers) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
@@ -58,6 +58,7 @@ public class AbstractTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         //driver.get("https://demo.nopcommerce.com/");
+        driver.get(url);
         return driver;
     }
 

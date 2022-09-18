@@ -13,7 +13,7 @@ public class HomepageAction extends AbstractPage {
 
     public void clicklnkRegister(String name){
         //waitToClickable(driver,HomepageUI.lnkRegister);
-        clickToElement(driver,HomepageUI.lnkRegister, name);
+        clickToElementDynamic(driver,HomepageUI.lnkRegister, name);
     }
     public void clicklnkLogout(){
         waitToClickable(driver,HomepageUI.lnkLogout);

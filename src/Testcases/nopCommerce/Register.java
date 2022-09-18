@@ -28,13 +28,13 @@ public class Register extends AbstractTest {
     @Test
     public void TC_01_Register() {
         homepageAction.clicklnkRegister("Register");
-//        registerAction.inputFirstname("Khoamama");
-//        registerAction.inputLastname("cancer");
-//        registerAction.inputEmail(generatorEmail());
-//        registerAction.inputPassword("123456a");
-//        registerAction.inputConfirmPassword("123456a");
-//        registerAction.clickRegister();
-        //homepageAction.clicklnkLogout();
+        registerAction.inputFirstname("Khoamama");
+        registerAction.inputLastname("cancer");
+        registerAction.inputEmail(generatorEmail());
+        registerAction.inputPassword("123456a");
+        registerAction.inputConfirmPassword("123456a");
+        registerAction.clickRegister();
+        homepageAction.clicklnkLogout();
     }
 
     @Test

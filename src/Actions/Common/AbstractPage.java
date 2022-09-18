@@ -1,9 +1,6 @@
 package Actions.Common;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -132,12 +129,12 @@ public class AbstractPage {
 
     // click to element
     public void clickToElement(WebDriver driver, String xpathxpathLocator) {
-       findElementByXpath(driver, xpathxpathLocator).click();
+        findElementByXpath(driver, xpathxpathLocator).click();
     }
 
     // click to element with dynamic xpathLocator
-    public void clickToElement(WebDriver driver, String xpathxpathLocator, String... values) {
-       findElementByXpath(driver, varAguments(xpathxpathLocator, values)).click();
+    public void clickToElementDynamic(WebDriver driver, String xpathxpathLocator, String... values) {
+        findElementByXpath(driver, varAguments(xpathxpathLocator, values)).click();
     }
 
     // click to element by JS (include custom checkbox)
@@ -147,11 +144,33 @@ public class AbstractPage {
         jsExecutor.executeScript("arguments[0].click();", element);
     }
 
+    // click to element by JS with dynamic locator
+
+
     // sendKey to element
     public void sendKeytoElement(WebDriver driver, String xpathLocator, String value) {
         WebElement element = findElementByXpath(driver, xpathLocator);
         element.clear(); // luôn luôn clear trước khi Input
         element.sendKeys(value);
+    }
+
+    // sendKey to element with dynamic locator
+    public void sendKeysToElementDynamic(WebDriver driver, String xpathLocator, String value, String... values) {
+        WebElement element = findElementByXpath(driver, varAguments(xpathLocator, values));
+        element.clear();
+        element.sendKeys(value);
+    }
+
+    // press keyboard
+    public void pressEnter(WebDriver driver, String xpathLocator, Keys keys) {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(findElementByXpath(driver, xpathLocator), keys).perform();
+    }
+
+    // press keyboard with dynamic locator
+    public void pressEnterDynamic(WebDriver driver, String xpathLocator, Keys keys, String... values) {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(findElementByXpath(driver, varAguments(xpathLocator, values)), keys).perform();
     }
 
     // select item default dropdown
@@ -160,8 +179,11 @@ public class AbstractPage {
         select.selectByVisibleText(value);
     }
 
-    // select item default dropdown
-
+    // select item default dropdown with dynamic locator
+    public void selectItemDefaultDropdownDynamic(WebDriver driver, String xpathLocatr, String itemValue, String... values) {
+        Select select = new Select(findElementByXpath(driver, varAguments(xpathLocatr, values)));
+        select.selectByVisibleText(itemValue);
+    }
 
     // get first selected option
     public WebElement getFirstSelectedOption(WebDriver driver, String xpathLocator) {
@@ -169,7 +191,11 @@ public class AbstractPage {
         return select.getFirstSelectedOption();
     }
 
-    // get first selected option
+    // get first selected option with dymanic locator
+    public WebElement getFirstSelectedOptionDynamic(WebDriver driver, String xpathLocator, String... values) {
+        Select select = new Select(findElementByXpath(driver, varAguments(xpathLocator, values)));
+        return select.getFirstSelectedOption();
+    }
 
     // select item custom dropdown
     public void selectItemCustomDropdown(WebDriver driver, String selectFieldXpath, String listXpath, String expectedValue) {
@@ -193,10 +219,18 @@ public class AbstractPage {
     }
 
     // get text with dynamic locator
+    public String getTextDynamic(WebDriver driver, String xpathLocator, String... values) {
+        return findElementByXpath(driver, varAguments(xpathLocator, values)).getText();
+    }
 
     // get attribute
     public String getAttribute(WebDriver driver, String xpathLocator, String nameAttribute) {
         return findElementByXpath(driver, xpathLocator).getAttribute(nameAttribute);
+    }
+
+    // get size
+    public int getSize(WebDriver driver, String xpathLocator) {
+        return findElementsByXpath(driver, xpathLocator).size();
     }
 
     // check to checkbox
@@ -221,6 +255,9 @@ public class AbstractPage {
     }
 
     // verify element is displayed with dynamic locator
+    public boolean elementIsDisplayedDynamic(WebDriver driver, String xpathLocator, String... values) {
+        return findElementByXpath(driver, varAguments(xpathLocator, values)).isDisplayed();
+    }
 
     // verify element is enabled
     public boolean elementIsEnable(WebDriver driver, String xpathLocator) {
@@ -274,6 +311,11 @@ public class AbstractPage {
         return By.xpath(xpathLocator);
     }
 
+    // by xpath(xpathLocator) with dynamic locator
+    public By byXpathDynamic(String xpathLocator, String... values) {
+        return By.xpath(varAguments(xpathLocator, values));
+    }
+
     // wait to visible
     public void waitToVisible(WebDriver driver, String xpathLocator) {
         WebDriverWait explicitWait = new WebDriverWait(driver, 30);
@@ -281,6 +323,10 @@ public class AbstractPage {
     }
 
     // wait to visible with dynamic locator
+    public void waitToVisibleDynamic(WebDriver driver, String xpathLocator, String... values) {
+        WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+        explicitWait.until(ExpectedConditions.visibilityOfElementLocated(byXpathDynamic(xpathLocator, values)));
+    }
 
     // wait to invisible
     public void waitToInvisible(WebDriver driver, String xpathLocator) {
@@ -289,6 +335,10 @@ public class AbstractPage {
     }
 
     // wait to invisible with dynamic locator
+    public void waitToInvisibleDynamic(WebDriver driver, String xpathLocator, String... values) {
+        WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(byXpathDynamic(xpathLocator, values)));
+    }
 
     // wait to clickable
     public void waitToClickable(WebDriver driver, String xpathLocator) {
@@ -297,6 +347,10 @@ public class AbstractPage {
     }
 
     // wait to clickable with dynamic locator
+    public void waitToClickableDynamic(WebDriver driver, String xpathLocator, String... values) {
+        WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+        explicitWait.until(ExpectedConditions.elementToBeClickable(byXpathDynamic(xpathLocator, values)));
+    }
 
     public void sleep(long timeInSecond) {
         try {
@@ -305,5 +359,4 @@ public class AbstractPage {
             throw new RuntimeException(e);
         }
     }
-
 }
