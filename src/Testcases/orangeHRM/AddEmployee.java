@@ -62,7 +62,7 @@ public class AddEmployee extends AbstractTest {
     public void TC_04_EditEmployee() {
         editEmployeePageObject.clickbtnEdit();
         editEmployeePageObject.clicklnkJob();
-        //editEmployeePageObject.selectDdlJobTitle("QA Lead");
+        editEmployeePageObject.selectDdlJobTitle("QA Lead");
         editEmployeePageObject.selectDdlSubUnit("Engineering");
         loginPageObject.submit();
     }

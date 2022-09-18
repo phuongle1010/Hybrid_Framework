@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <parameter name="url" value="https://demo.nopcommerce.com/"/>
 <!--    <test verbose="2" preserve-order="true" name="D:/Automation Selenium Webdriver/Hybrid_Framework">-->
     <test name="Run on Chrome">
         <parameter name="browsers" value="chrome"/>
