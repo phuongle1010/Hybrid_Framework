@@ -233,6 +233,11 @@ public class AbstractPage {
         return findElementsByXpath(driver, xpathLocator).size();
     }
 
+    // get size with dynamic locator
+    public int getSizeDynamic(WebDriver driver, String xpathLocator, String... values) {
+        return findElementsByXpath(driver, varAguments(xpathLocator, values)).size();
+    }
+
     // check to checkbox
     public void checkToCheckbox(WebDriver driver, String xpathLocator) {
         WebElement element = findElementByXpath(driver, xpathLocator);
@@ -350,6 +355,37 @@ public class AbstractPage {
     public void waitToClickableDynamic(WebDriver driver, String xpathLocator, String... values) {
         WebDriverWait explicitWait = new WebDriverWait(driver, 30);
         explicitWait.until(ExpectedConditions.elementToBeClickable(byXpathDynamic(xpathLocator, values)));
+    }
+
+    public void uploadFile(WebDriver driver, String xpathLocator, String file){
+        findElementByXpath(driver, xpathLocator).sendKeys(file);
+    }
+
+    public void uploadMultiFile(WebDriver driver, String xpathLocator, String... fileName){
+        // detect operation system (khai báo 1 biến để detect OS)
+        String osName = System.getProperty("os.name");
+        // project path
+        String projectLocation = System.getProperty("user.dir");// khai báo 1 biến để lấy ra đường dẫn chứa folder project
+        // khai báo 1 biến chứa đường dẫn của folder chưa file upload
+        String filePath = ""; // "" => khai báo rỗng
+        String fullFileName = ""; // "" => khai báo rỗng
+        // kiểm tra OS đang sử dụng
+        if (osName.contains("Windows")){
+            // windowns sẽ apply theo format "\\folder upload\\"
+            filePath = projectLocation + "\\uploadFile\\";
+        }
+        else
+            // Mac/Linux sẽ apply theo format "//folder upload//"
+            filePath = projectLocation + "//uploadFile//";
+        // khai báo 1 biến để duyệt qua list fileName
+        // filePath = D:/Automation Selenium Webdriver/Hybrid_Framework/uploadFile
+        // filePath + file = D:/Automation Selenium Webdriver/Hybrid_Framework/uploadFile/<file_name>
+        // D:/Automation Selenium Webdriver/Hybrid_Framework/uploadFile/Nature01
+        for (String file: fileName) {
+            fullFileName = fullFileName + filePath + file + "\n";
+        }
+        fullFileName = fullFileName.trim(); // bỏ khoảng trống sau khi lấy tên file cuối cùng
+        findElementByXpath(driver, xpathLocator).sendKeys(fullFileName);
     }
 
     public void sleep(long timeInSecond) {

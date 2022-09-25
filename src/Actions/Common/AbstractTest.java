@@ -14,7 +14,7 @@ public class AbstractTest {
         CHROME, FIREFOX, CHROME_HEADLESS, FIREFOX_HEADLESS
     }
 
-    protected WebDriver getBrowser(String browserName) {
+    protected WebDriver getBrowser(String browserName, String url) {
 
 //        if (browserName.equals("chrome")) {
 //            //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/browsers/chromedriver.exe");
@@ -24,7 +24,7 @@ public class AbstractTest {
 //            //System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/browsers/geckodriver.exe");
 //            driver = new FirefoxDriver();
 //        } else if (browserName.equals("chrome_headless")) {
-//            //System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/browsers/geckodriver.exe");
+//            //System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/browsers/chromedriver.exe");
 //            ChromeOptions options = new ChromeOptions();
 //            options.setHeadless(true);
 //            driver = new ChromeDriver(options);
@@ -57,7 +57,6 @@ public class AbstractTest {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        //driver.get("https://demo.nopcommerce.com/");
         driver.get(url);
         return driver;
     }

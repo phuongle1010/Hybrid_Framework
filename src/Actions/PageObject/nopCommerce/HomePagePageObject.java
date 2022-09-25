@@ -4,10 +4,10 @@ import Actions.Common.AbstractPage;
 import Interfaces.nopCommerce.HomepageUI;
 import org.openqa.selenium.WebDriver;
 
-public class HomepageAction extends AbstractPage {
+public class HomePagePageObject extends AbstractPage {
     WebDriver driver;
 
-    public HomepageAction(WebDriver driver) {
+    public HomePagePageObject(WebDriver driver) {
         this.driver = driver;
     }
 

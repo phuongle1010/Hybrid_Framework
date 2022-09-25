@@ -6,13 +6,10 @@ import Actions.PageObject.orangeHRM.EditEmployeePageObject;
 import Actions.PageObject.orangeHRM.LoginPageObject;
 import Actions.PageObject.orangeHRM.SearchEmloyeePageObject;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 public class AddEmployee extends AbstractTest {
     WebDriver driver;
@@ -29,8 +26,6 @@ public class AddEmployee extends AbstractTest {
         addEmployeePageObject = new AddEmployeePageObject(driver);
         searchEmloyeePageObject = new SearchEmloyeePageObject(driver);
         editEmployeePageObject = new EditEmployeePageObject(driver);
-
-        driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
     }
 
     @Test
@@ -38,7 +33,6 @@ public class AddEmployee extends AbstractTest {
         loginPageObject.inputUserName("Admin");
         loginPageObject.inputPassword("admin123");
         loginPageObject.submit();
-
     }
 
     @Test
@@ -52,10 +46,9 @@ public class AddEmployee extends AbstractTest {
 
     @Test
     public void TC_03_SearchEmployee() {
-        //searchEmloyeePageObject.clicklnkEmployeelist();
+        searchEmloyeePageObject.clicklnkEmployeelist();
         searchEmloyeePageObject.inputEmloyeeId("0250");
         loginPageObject.submit();
-
     }
 
     @Test

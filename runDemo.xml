@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <parameter name="url" value="https://datatables.net/"/>
-<!--    <test verbose="2" preserve-order="true" name="D:/Automation Selenium Webdriver/Hybrid_Framework">-->
+<!--    <parameter name="url" value="https://datatables.net/"/>-->
+<!--    <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/"/>-->
+<!--    <parameter name="url" value="https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/"/>-->
+    <parameter name="url" value="https://demo.nopcommerce.com/"></parameter>
     <test name="Run on Chrome">
         <parameter name="browsers" value="chrome"/>
         <classes>
-            <class name="Demo.Testcases.DemoTCs">
-<!--                <methods>-->
-<!--                    <include name="Register"/>-->
-<!--                </methods>-->
-            </class>
+<!--            <class name="Demo.Testcases.DynamicLocator"></class>-->
+<!--            <class name="Demo.Testcases.Upload"></class>-->
+<!--            <class name="Demo.Testcases.DataTable"></class>-->
+            <class name="Demo.Testcases.SoftAssertDemo"></class>
         </classes>
     </test>
-<!--    <test name="Run on Firefox">-->
-<!--        <parameter name="browsers" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="Testcases.Register.Register">-->
-<!--                <methods>-->
-<!--                    <include name="Register"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>

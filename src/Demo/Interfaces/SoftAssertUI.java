@@ -1,6 +1,6 @@
-package Interfaces.nopCommerce;
+package Demo.Interfaces;
 
-public class RegisterUI {
+public class SoftAssertUI {
     public static final String txtFirstName = "//input[@id='FirstName']";
     public static final String txtLastName = "//input[@id='LastName']";
     public static final String txtEmail = "//input[@id='Email']";
@@ -9,4 +9,3 @@ public class RegisterUI {
     public static final String btnRegister = "//button[text()='Register']";
     public static final String lblMessage = "//div[text()='%s']";
 }
-

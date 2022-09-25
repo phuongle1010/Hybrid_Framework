@@ -4,10 +4,10 @@ import Actions.Common.AbstractPage;
 import Interfaces.nopCommerce.RegisterUI;
 import org.openqa.selenium.WebDriver;
 
-public class RegisterAction extends AbstractPage {
+public class RegisterPageObject extends AbstractPage {
     WebDriver driver;
 
-    public RegisterAction(WebDriver driver) {
+    public RegisterPageObject(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -40,4 +40,10 @@ public class RegisterAction extends AbstractPage {
         waitToClickable(driver, RegisterUI.btnRegister);
         clickToElement(driver, RegisterUI.btnRegister);
     }
+public boolean verifyMessage(String msg){
+        waitToVisible(driver,RegisterUI.lblMessage);
+        return elementIsDisplayedDynamic(driver,RegisterUI.lblMessage,msg);
+
+}
+
 }
