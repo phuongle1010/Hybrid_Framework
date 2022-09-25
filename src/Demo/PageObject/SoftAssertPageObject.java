@@ -40,7 +40,8 @@ public class SoftAssertPageObject extends AbstractPage {
         waitToClickable(driver, SoftAssertUI.btnRegister);
         clickToElement(driver, SoftAssertUI.btnRegister);
     }
-    public String verifyMessage(String msg){
-        return getTextDynamic(driver,SoftAssertUI.lblMessage,msg);
+
+    public String verifyMessage(String msg) {
+        return getTextDynamic(driver, SoftAssertUI.lblMessage, msg);
     }
 }

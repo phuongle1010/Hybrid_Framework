@@ -15,10 +15,11 @@ public class UploadPageObject extends AbstractPage {
         uploadFile(driver, UploadUI.btnUpload, file);
     }
 
-    public void uploadMultipleFile(String...files){
+    public void uploadMultipleFile(String... files) {
         uploadMultiFile(driver, UploadUI.btnUpload, files);
     }
-    public void clickStart(String value){
-        clickToElementDynamic(driver, UploadUI.btbStart,value);
+
+    public void clickStart(String value) {
+        clickToElementDynamic(driver, UploadUI.btbStart, value);
     }
 }
